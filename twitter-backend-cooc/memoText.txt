@@ -1,0 +1,3 @@
+// twitterMemberRegistrationテーブル作成sql文
+create table twitterMemberRegistration (id mediumint not null auto_increment, userName varchar(12) not null, mailAddress varchar(255) not null, primary key (id));
+

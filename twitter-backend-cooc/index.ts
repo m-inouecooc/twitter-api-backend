@@ -1,4 +1,5 @@
 import express, { Application, Request, Response } from "express";
+import { MemberRegistrationRouter } from "./src/routers/member-registration/member-registration-router";
 
 const app: Application = express();
 const PORT = 3000;
@@ -6,11 +7,17 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", async (_req: Request, res: Response) => {
-  console.log("aaaaaaaaaaaa");
-  return res.status(200).send({
-    message: "Hello World!",
-  });
+app.get("/", async (req: Request, res: Response) => {
+  try {
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
+    const responseData = await MemberRegistrationRouter.memberRegistration(
+      req,
+      res
+    );
+    res.json({ response: responseData });
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 try {
