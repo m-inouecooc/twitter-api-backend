@@ -3,6 +3,6 @@ import { MemberRegistrationController } from "../../controllers/member-registrat
 
 export class MemberRegistrationRouter {
   public static async memberRegistration(req: Request, res: Response) {
-    MemberRegistrationController.memberRegistrationController(req, res);
+    await MemberRegistrationController.memberRegistrationController(req, res);
   }
 }

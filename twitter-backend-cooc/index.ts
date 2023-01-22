@@ -10,11 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", async (req: Request, res: Response) => {
   try {
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
-    const responseData = await MemberRegistrationRouter.memberRegistration(
-      req,
-      res
-    );
-    res.json({ response: responseData });
+    await MemberRegistrationRouter.memberRegistration(req, res);
   } catch (error) {
     console.error(error);
   }
